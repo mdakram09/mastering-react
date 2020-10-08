@@ -3,8 +3,12 @@ import React, { Component } from "react";
 class Counter extends Component {
   state = {
     count: 0,
-    tags: [],
+    tags: ["tag1", "tag2", "tag3"],
   };
+  // constructor() {
+  //   super();
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
   render() {
     return (
       <React.Fragment>
@@ -41,9 +45,9 @@ class Counter extends Component {
     return count === 0 ? "Zero" : count;
   }
 
-  handleIncrement() {
-    console.log("Increment Clicked!");
-  }
+  handleIncrement = () => {
+    console.log("Increment Clicked!", this);
+  };
 }
 
 export default Counter;
