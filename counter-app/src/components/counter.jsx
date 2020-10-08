@@ -9,7 +9,12 @@ class Counter extends Component {
     return (
       <React.Fragment>
         <span className={this.getBadgeClasses()}>{this.formatCounter()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
         {this.state.tags.length === 0 && "Please create a new tag."}
         {this.renderTags()}
       </React.Fragment>
@@ -34,6 +39,10 @@ class Counter extends Component {
   formatCounter() {
     const { count } = this.state;
     return count === 0 ? "Zero" : count;
+  }
+
+  handleIncrement() {
+    console.log("Increment Clicked!");
   }
 }
 
