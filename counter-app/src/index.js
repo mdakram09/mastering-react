@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
-import Counters from "./components/counters";
+import App from "./App";
 
-ReactDOM.render(<Counters />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
 serviceWorker.unregister();
