@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 import NavBar from "./components/navbar";
 import Counters from "./components/counters";
 
@@ -12,6 +12,13 @@ class App extends Component {
       { id: 4, value: 0 },
     ],
   };
+  constructor() {
+    super();
+    console.log("App - Construtor");
+  }
+  componentDidMount() {
+    console.log("App - Mounted");
+  }
   handleReset = () => {
     const counters = this.state.counters.map((c) => {
       c.value = 0;
@@ -23,30 +30,31 @@ class App extends Component {
     const counters = this.state.counters.filter((c) => c.id !== counterId);
     this.setState({ counters });
   };
-  handleIncrement = counter => {
+  handleIncrement = (counter) => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
     counters[index].value++;
-    this.setState({counters});
+    this.setState({ counters });
   };
   render() {
-  return (
-    <React.Fragment>
-      <NavBar
-        totalCounters={this.state.counters.filter(c => c.value > 0).length}
-      />
-      <main className="container">
-        <Counters 
-          counters={this.state.counters}
-          onReset={this.handleReset}
-          onIncrement={this.handleIncrement}
-          onDelete={this.handleDelete}
+    console.log("App - Rendered");
+    return (
+      <React.Fragment>
+        <NavBar
+          totalCounters={this.state.counters.filter((c) => c.value > 0).length}
         />
-      </main>
-    </React.Fragment>
-  );
-}
+        <main className="container">
+          <Counters
+            counters={this.state.counters}
+            onReset={this.handleReset}
+            onIncrement={this.handleIncrement}
+            onDelete={this.handleDelete}
+          />
+        </main>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
