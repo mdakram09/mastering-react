@@ -2,13 +2,6 @@ import React, { Component } from "react";
 import Counter from "./counter";
 
 class Counters extends Component {
-  componentDidUpdate(prevProps, prevState) {
-    console.log("prevProps: ", prevProps);
-    console.log("prevState: ", prevState);
-    if (prevProps.counter.value !== this.props.counter.value) {
-      //Ajax call and get new data from the server
-    }
-  }
   render() {
     console.log("Counters - Rendered");
     const { onReset, counters, onDelete, onIncrement } = this.props;
