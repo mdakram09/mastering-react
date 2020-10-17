@@ -32,6 +32,9 @@
     ]
   },
   "devDependencies": {
-    "lodash": "^4.17.10"
+    "bootstrap": "^4.1.1",
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.2"
   }
 }
