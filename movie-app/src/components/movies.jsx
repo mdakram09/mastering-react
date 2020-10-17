@@ -43,10 +43,12 @@ class Movies extends Component {
     if (count === 0) return <p>There are no movies in the database.</p>;
     return (
       <div className="row">
-        <div className="col-2">
+        <div className="col-3">
           <ListGroup
-            item={this.state.genres}
+            items={this.state.genres}
             onItemSelect={this.handleGenreSelect}
+            textProperty="name"
+            valueProperty="_id"
           />
         </div>
         <div className="col">
