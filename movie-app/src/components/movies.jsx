@@ -5,7 +5,6 @@ import Pagination from "./common/pagination";
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import { paginate } from "../utils/paginate";
-import { filter } from "lodash";
 import _ from "lodash";
 
 class Movies extends Component {

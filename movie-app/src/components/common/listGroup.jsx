@@ -3,7 +3,7 @@ const ListGroup = (props) => {
   const {
     items,
     textProperty,
-    valueProperty,
+    // valueProperty,
     onItemSelect,
     selectedItem,
   } = props;
