@@ -4,7 +4,7 @@ class LoginForm extends Component {
     return (
       <div>
         <h1>Login</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input id="username" type="text" className="form-control" />
@@ -18,6 +18,10 @@ class LoginForm extends Component {
       </div>
     );
   }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Login button was clicked!");
+  };
 }
 
 export default LoginForm;
