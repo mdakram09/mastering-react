@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import Joi from "joi-browser";
 import Input from "./common/input";
 
 class LoginForm extends Component {
   state = {
     account: { username: "", password: "" },
     errors: {},
+  };
+  schema = {
+    username: Joi.string().required(),
+    password: Joi.string().required(),
   };
   render() {
     const { account, errors } = this.state;
@@ -54,10 +59,15 @@ class LoginForm extends Component {
       if (value.trim() === "") return "Username is required.";
     }
     if (name === "password") {
-      if (value.trim() === "") return "Password is required.";
+      if (value.trim() === "") return "P-assword is required.";
     }
   };
   validate = () => {
+    const result = Joi.validate(this.state.account, this.schema, {
+      abortEarly: false,
+    });
+    console.log("validate and Joi: ", result);
+
     const errors = {};
     const { account } = this.state;
     if (account.username.trim() === "")
