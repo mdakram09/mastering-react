@@ -4,6 +4,7 @@ import Input from "./common/input";
 class LoginForm extends Component {
   state = {
     account: { username: "", password: "" },
+    errors: {},
   };
   render() {
     const { account } = this.state;
@@ -30,12 +31,18 @@ class LoginForm extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
+    const errors = this.validate();
+    this.setState({ errors });
+    if (errors) return;
     console.log("Login button was clicked!");
   };
   handleChange = ({ currentTarget: input }) => {
     const account = { ...this.state.account };
     account[input.name] = input.value;
     this.setState({ account });
+  };
+  validate = () => {
+    return { username: "Username is required!" };
   };
 }
 
