@@ -25,9 +25,9 @@ class App extends Component {
 
   handleUpdate = async (post) => {
     post.title = "UPDATED";
-    const { data } = await axios.put(apiEndpoint + "/" + post.id, post);
+    await axios.put(apiEndpoint + "/" + post.id, post);
 
-    console.log("data", data);
+    // console.log("data", data);
 
     const posts = [...this.state.posts];
     const index = posts.indexOf(post);
@@ -35,8 +35,11 @@ class App extends Component {
     this.setState({ posts });
   };
 
-  handleDelete = (post) => {
-    console.log("Delete", post);
+  handleDelete = async (post) => {
+    // console.log("Delete", post);
+    await axios.delete(apiEndpoint + "/" + post.id);
+    const posts = this.state.posts.filter((p) => p.id !== post.id);
+    this.setState({ posts });
   };
 
   render() {
