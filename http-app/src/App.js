@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import http from "./services/httpService";
+import config from "./config.json";
 import "./App.css";
 
-const apiEndpoint = "http://jsonplaceholder.typicode.com/posts";
 class App extends Component {
   state = {
     posts: [],
   };
 
   async componentDidMount() {
-    const { data: posts } = await http.get(apiEndpoint);
+    const { data: posts } = await http.get(config.apiEndpoint);
     // console.log("posts: ", posts);
     this.setState({ posts });
   }
@@ -17,7 +17,7 @@ class App extends Component {
   handleAdd = async () => {
     // console.log("Add");
     const obj = { title: "a", body: "b" };
-    const { data: post } = await http.post(apiEndpoint, obj);
+    const { data: post } = await http.post(config.apiEndpoint, obj);
     console.log("post: ", post);
 
     const posts = [post, ...this.state.posts];
@@ -26,7 +26,7 @@ class App extends Component {
 
   handleUpdate = async (post) => {
     post.title = "UPDATED";
-    await http.put(apiEndpoint + "/" + post.id, post);
+    await http.put(config.apiEndpoint + "/" + post.id, post);
 
     // console.log("data", data);
 
@@ -44,7 +44,7 @@ class App extends Component {
     this.setState({ posts });
 
     try {
-      await http.delete(apiEndpoint + "/" + post.id);
+      await http.delete(config.apiEndpoint + "/" + post.id);
       // throw new Error("");
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
